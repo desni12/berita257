@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\News;
+use App\News as Berita;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -72,13 +72,12 @@ class NewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\News  $news
+     * @param  \App\News  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update($id, Request $request, Berita $berita)
     {
         $data=Berita::findOrFail($id);
-        $data->tanggal=$request->tanggal;
         $data->judul=$request->judul;
         $data->headline=$request->headline;
         $data->isi=$request->isi;
@@ -94,7 +93,7 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy($id)
     {
         $data=Berita::findOrFail($id);
         $data->delete();

@@ -15,11 +15,10 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('tanggal');
-            $table->string('judul');
-            $table->text('headline');
-            $table->text('isi');
-            $table->string('penulis');
+            $table->string('judul', 100);
+            $table->text('headline', 150);
+            $table->mediumText('isi');
+            $table->string('penulis', 50);
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('newss');
+        Schema::dropIfExists('news');
     }
 }
